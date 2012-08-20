@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-8-20 16:24:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="energy.Orginfo" table="orginfo" catalog="energysystem">
+        <id name="orgId" type="string">
+            <column name="OrgID" length="9" />
+            <generator class="assigned" />
+        </id>
+        <property name="orgName" type="string">
+            <column name="OrgName" length="48" not-null="true" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="CreateTime" length="19" not-null="true" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrgID" length="9" not-null="true" />
+            </key>
+            <one-to-many class="energy.User" />
+        </set>
+    </class>
+</hibernate-mapping>

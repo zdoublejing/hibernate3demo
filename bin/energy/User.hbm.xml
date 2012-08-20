@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2012-8-20 16:24:44 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="energy.User" table="user" catalog="energysystem">
+        <id name="userId" type="string">
+            <column name="UserID" length="16" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="orginfo" class="energy.Orginfo" fetch="select">
+            <column name="OrgID" length="9" not-null="true" />
+        </many-to-one>
+        <property name="userName" type="string">
+            <column name="UserName" length="32" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="32" not-null="true" />
+        </property>
+        <property name="trueName" type="string">
+            <column name="TrueName" length="32" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="48" />
+        </property>
+        <property name="contactTel" type="string">
+            <column name="ContactTel" length="48" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="CreateTime" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
